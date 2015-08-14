@@ -26,15 +26,19 @@
   "dependencies": {
     "cumulo-pipeline": "0.0.3",
     "immutable": "^3.7.4",
+    "immutablediff": "^0.4.2",
+    "immutablepatch": "^0.2.0",
     "marked": "spicyj/marked-react",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "shortid": "^2.2.2",
+    "ws": "^0.7.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Memkits/multi-user-markdown.git"
+    "url": "https://github.com/Cumulo/multi-user-markdown.git"
   },
   "bugs": {
-    "url": "https://github.com/Memkits/multi-user-markdown/issues"
+    "url": "https://github.com/Cumulo/multi-user-markdown/issues"
   },
-  "homepage": "https://github.com/Memkits/multi-user-markdown"
+  "homepage": "https://github.com/Cumulo/multi-user-markdown"
 }
