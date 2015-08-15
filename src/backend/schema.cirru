@@ -17,9 +17,7 @@ var
   :end 0
 
 = exports.store $ Immutable.fromJS $ {}
-  :context $ {}
-    :lines $ []
-    :time (timeUtil.getNowString)
-  :state $ {}
-    :start 0
-    :end 0
+  :lines $ []
+  :time (timeUtil.getNowString)
+  :start 0
+  :end 0

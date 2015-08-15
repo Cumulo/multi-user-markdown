@@ -7,9 +7,10 @@ var
 
 = module.exports $ \ (db state)
   ... schema.store
-    setIn ([] :context :lines)
+    set :lines
       Immutable.fromJS $ ... db
         getIn ([] :context :text)
         split ":\n"
-    setIn ([] :state :start) $ state.get :start
-    setIn ([] :state :end) $ state.get :end
+    set :time $ ... db (getIn $ [] :context :time)
+    set :start $ state.get :start
+    set :end $ state.get :end

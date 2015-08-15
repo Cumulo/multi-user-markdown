@@ -3,9 +3,15 @@ var
   React $ require :react
   Pipeline $ require :cumulo-pipeline
 
+-- ":marked-react problem"
+= window.React React
+
 var
   view $ require :../frontend/view
   schema $ require :../backend/schema
+
+var
+  Editor $ React.createFactory $ require :./editor
 
 = exports.in $ new Pipeline
 
@@ -24,7 +30,8 @@ var pageComponent $ React.createClass $ {}
 
   :render $ \ ()
     div ({} (:className :app-page))
-      , ":Page demo"
+      Editor $ {}
+        :userState this.state.store
 
 var Page $ React.createFactory pageComponent
 

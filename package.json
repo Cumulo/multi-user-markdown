@@ -34,6 +34,7 @@
     "origami-ui": "0.0.1",
     "react": "^0.13.3",
     "shortid": "^2.2.2",
+    "tail-call": "0.0.1",
     "ws": "^0.7.2"
   },
   "repository": {
