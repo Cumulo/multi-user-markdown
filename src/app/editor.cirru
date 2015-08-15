@@ -33,6 +33,9 @@ MarkedReact.setOptions $ {}
       :start text.length
       :end text.length
 
+  :componentDidUpdate $ \ ()
+    this.ensureSelection
+
   :getText $ \ ()
     cond
       > (this.props.userState.get :time) this.state.stateTime
@@ -40,6 +43,28 @@ MarkedReact.setOptions $ {}
         get :lines
         join ":\n"
       , this.state.text
+
+  :getEnd $ \ ()
+    cond
+      > (this.props.userState.get :time) this.state.stateTime
+      this.props.userState.get :end
+      , this.state.end
+
+  :getStart $ \ ()
+    cond
+      > (this.props.userState.get :time) this.state.stateTime
+      this.props.userState.get :start
+      , this.state.start
+
+  :ensureSelection $ \ ()
+    var start (this.getStart)
+    var end (this.getEnd)
+    var el $ this.refs.source.getDOMNode
+    if (isnt el.selectionStart start) $ do
+      = el.selectionStart start
+    if (isnt el.selectionEnd end) $ do
+      = el.selectionEnd end
+    return
 
   :onChange $ \ (event)
     var info $ text.diff (this.getText) event.target.value
@@ -60,6 +85,7 @@ MarkedReact.setOptions $ {}
 
     div ({} (:className :app-editor))
       textarea $ {}
+        :ref :source
         :className :source
         :value text
         :onChange this.onChange

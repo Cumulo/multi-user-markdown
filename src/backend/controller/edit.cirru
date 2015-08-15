@@ -16,10 +16,14 @@ var
     updateIn ([] :context :text) $ \ (text)
       textUtil.patch text info
     setIn ([] :context :time) (timeUtil.getNowString)
-    updateIn ([] :states stateId :start) $ \ (start)
-      cond (> start (+ info.start info.length)) (+ start info.length)
-        cond (> start info.start) info.start start
-    updateIn ([] :states stateId :end) $ \ (end)
-      cond (> end (+ info.start info.length)) (+ end info.length)
-        cond (> end info.start) info.start end
-
+    update :states $ \ (states)
+      states.map $ \ (aState)
+        cond (is (aState.get :id) stateId)
+          ... aState (set :start info.start) (set :end info.end)
+          ... aState
+            update :start $ \ (start)
+              cond (> start (+ info.start info.length)) (+ start info.length)
+                cond (> start info.start) info.start start
+            update :end $ \ (end)
+              cond (> end (+ info.start info.length)) (+ end info.length)
+                cond (> end info.start) info.start end
