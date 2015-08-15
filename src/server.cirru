@@ -6,7 +6,7 @@ var
   websocket $ require :./backend/websocket
 
 websocket.setup $ {} (:port 3000)
-websocket.out.for $ \ (data)
+-- websocket.out.for $ \ (data)
   console.log :websocket.out data
 
 differ.setup $ {} (:expand expand)

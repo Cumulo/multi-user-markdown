@@ -26,13 +26,25 @@ var countTailMatch $ recur $ \ (prevText text count)
 
 = exports.diff $ \ (prevText text)
   var countHead $ countHeadMatch prevText text 0
-  var countTail $ countTailMatch prevText text 0
+  var countTail $ countTailMatch
+    prevText.substring countHead
+    text.substring countHead
+    , 0
   var textBefore $ prevText.substring 0 countHead
   var textPrevBetween $ prevText.substring countHead
     - prevText.length countTail
   var textBetween $ text.substring countHead
     - text.length countTail
-  {}
-    :start textBefore.length
+  var result $ {}
+    :from textBefore.length
     :length textPrevBetween.length
     :chunk textBetween
+  console.log :diff prevText text result
+  return result
+
+= exports.patch $ \ (text info)
+  var textBefore $ text.substring 0 info.from
+  var textAfter $ text.substring $ + info.from info.length
+  var result $ + textBefore info.chunk textAfter
+  console.log :patch text info result
+  return result

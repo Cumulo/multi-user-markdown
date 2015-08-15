@@ -28,13 +28,27 @@ MarkedReact.setOptions $ {}
       get :lines
       join ":\n"
     {}
-      :stateTime (timeUtil.getNowString)
+      :stateTime (timeUtil.getPast)
       :text text
       :start text.length
       :end text.length
 
+  :getText $ \ ()
+    cond
+      > (this.props.userState.get :time) this.state.stateTime
+      ... this.props.userState
+        get :lines
+        join ":\n"
+      , this.state.text
+
   :onChange $ \ (event)
-    console.log $ text.diff this.state.text event.target.value
+    var info $ text.diff (this.getText) event.target.value
+    = info.start event.target.selectionStart
+    = info.end event.target.selectionEnd
+    view.action $ {}
+      :type :edit/replace
+      :data info
+
     this.setState $ {}
       :text event.target.value
       :stateTime (timeUtil.getNowString)
@@ -42,14 +56,12 @@ MarkedReact.setOptions $ {}
       :end event.target.selectionEnd
 
   :render $ \ ()
-    var userState $ cond
-      > (this.props.userState.get :time) this.state.stateTime
-      , (this.props.userState.toJS) this.state
+    var text (this.getText)
 
     div ({} (:className :app-editor))
       textarea $ {}
         :className :source
-        :value userState.text
+        :value text
         :onChange this.onChange
       div ({} (:className :markdown))
-        MarkedReact userState.text
+        MarkedReact text
