@@ -14,6 +14,7 @@ var _database schema.database
 = exports.out $ exports.in.reduce _database $ \ (db action)
   case action.type
     :edit/replace $ editController.replace db action
+    :edit/move $ editController.move db action
     :state/connect $ stateController.connect db action
     :state/disconnect $ stateController.disconnect db action
     else db

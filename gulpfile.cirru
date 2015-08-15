@@ -31,7 +31,7 @@ gulp.task :script $ \ ()
     script $ require :gulp-cirru-script
 
   ... gulp
-    src :src/*.cirru
+    src :src/**/*.cirru
     pipe $ script
     pipe $ gulp.dest :lib/
 

@@ -60,11 +60,31 @@ MarkedReact.setOptions $ {}
     var start (this.getStart)
     var end (this.getEnd)
     var el $ this.refs.source.getDOMNode
-    console.log :ensureSelection start end
+    -- console.log :ensureSelection start end
     if (isnt el.selectionStart start) $ do
       = el.selectionStart start
     if (isnt el.selectionEnd end) $ do
       = el.selectionEnd end
+    return
+
+  :checkSelection $ \ ()
+    return undefined
+    var el $ this.refs.source.getDOMNode
+    if
+      or
+        isnt (this.getStart) el.selectionStart
+        isnt (this.getEnd) el.selectionEnd
+      do
+        var info $ {}
+          :start el.selectionStart
+          :end el.selectionEnd
+        view.action $ {}
+          :type :edit/move
+          :data info
+        this.setState $ {}
+          :start el.selectionStart
+          :end el.selectionEnd
+          :stateTime (timeUtil.getNowString)
     return
 
   :onChange $ \ (event)
@@ -81,6 +101,12 @@ MarkedReact.setOptions $ {}
       :start event.target.selectionStart
       :end event.target.selectionEnd
 
+  :onMouseUp $ \ ()
+    this.checkSelection
+
+  :onKeyUp $ \ ()
+    this.checkSelection
+
   :render $ \ ()
     var text (this.getText)
 
@@ -90,5 +116,7 @@ MarkedReact.setOptions $ {}
         :className :source
         :value text
         :onChange this.onChange
+        :onMouseUp this.onMouseUp
+        :onKeyUp this.onKeyUp
       div ({} (:className :markdown))
         MarkedReact text

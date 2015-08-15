@@ -9,7 +9,7 @@ var
   timeUtil $ require :../../util/time
 
 = exports.replace $ \ (db action)
-  console.log :editing $ JSON.stringify action
+  -- console.log :editing $ JSON.stringify action
   var
     stateId action.stateId
     info action.data
@@ -32,3 +32,11 @@ var
                 > end (+ info.from info.length)
                 + end info.chunk.length
                 cond (> end info.from) info.from end
+
+= exports.move $ \ (db action)
+  var
+    stateId action.stateId
+    info action.data
+  ... db
+    updateIn ([] :states stateId :start) info.start
+    updateIn ([] :states stateId :end) info.end

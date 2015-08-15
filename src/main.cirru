@@ -20,4 +20,4 @@ websocket.out.for $ \ (data)
   console.info :websocket.out $ JSON.stringify (data.toJS)
 
 store.out.for $ \ (data)
-  console.info :store.out (data.toJS)
+  console.info :store.out $ JSON.stringify (data.toJS)
