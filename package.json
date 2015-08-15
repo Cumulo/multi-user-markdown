@@ -29,7 +29,7 @@
     "cumulo-pipeline": "0.0.3",
     "immutable": "^3.7.4",
     "immutablediff": "^0.4.2",
-    "immutablepatch": "^0.2.0",
+    "immutablepatch": "jiyinyiyong/immutable-js-patch",
     "marked": "spicyj/marked-react",
     "origami-ui": "0.0.1",
     "react": "^0.13.3",

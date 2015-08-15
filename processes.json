@@ -1,0 +1,9 @@
+{
+  "name": "multi-user-markdown-4001",
+  "cwd": "/home/chen/repo/Cumulo/multi-user-markdown",
+  "script": "src/server.cirru",
+  "exec_interpreter": "cirru-script",
+  "env": {
+    "PORT": 4001
+  }
+}

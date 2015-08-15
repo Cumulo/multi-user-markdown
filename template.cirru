@@ -13,7 +13,7 @@ var
         link $ object (:rel :stylesheet)
           :href :style/main.css
         link $ object (:rel :icon)
-          :href :http://logo.cirru.org/cirru-32x32.png
+          :href :http://repo.cumulo.org/logo/cumulo.png
         script $ object (:src data.vendor) (:defer true)
         script $ object (:src data.main) (:defer true)
       body null

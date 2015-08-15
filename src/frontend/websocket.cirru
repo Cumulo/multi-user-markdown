@@ -8,7 +8,7 @@ var
 
 = exports.setup $ \ (options)
 
-  var socket $ new WebSocket $ + :ws://localhost: options.port
+  var socket $ new WebSocket $ + :ws:// location.host :: options.port
 
   = socket.onmessage $ \ (event)
     var data $ JSON.parse event.data

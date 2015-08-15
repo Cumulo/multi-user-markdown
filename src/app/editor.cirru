@@ -68,7 +68,6 @@ MarkedReact.setOptions $ {}
     return
 
   :checkSelection $ \ ()
-    return undefined
     var el $ this.refs.source.getDOMNode
     if
       or
@@ -85,6 +84,7 @@ MarkedReact.setOptions $ {}
           :start el.selectionStart
           :end el.selectionEnd
           :stateTime (timeUtil.getNowString)
+          :text (this.getText)
     return
 
   :onChange $ \ (event)

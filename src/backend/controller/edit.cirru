@@ -38,5 +38,5 @@ var
     stateId action.stateId
     info action.data
   ... db
-    updateIn ([] :states stateId :start) info.start
-    updateIn ([] :states stateId :end) info.end
+    setIn ([] :states stateId :start) info.start
+    setIn ([] :states stateId :end) info.end

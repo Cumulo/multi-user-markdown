@@ -6,7 +6,7 @@ var
   database $ require :./backend/database
   websocket $ require :./backend/websocket
 
-websocket.setup $ {} (:port 3000)
+websocket.setup $ {} (:port 4001)
 -- websocket.out.for $ \ (data)
   console.log :websocket.out $ JSON.stringify data
 

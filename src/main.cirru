@@ -14,7 +14,7 @@ websocket.out.forward store.in
 store.out.forward page.in
 view.out.forward websocket.in
 
-websocket.setup $ {} (:port 3000)
+websocket.setup $ {} (:port 4001)
 
 websocket.out.for $ \ (data)
   console.info :websocket.out $ JSON.stringify (data.toJS)

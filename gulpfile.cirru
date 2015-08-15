@@ -14,10 +14,10 @@ gulp.task :rsync $ \ (cb)
   wrapper.rsync
     object
       :ssh true
-      :src $ array :index.html :build
+      :src $ array :index.html :build :style :src :processes.json :package.json
       :recursive true
       :args $ array :--verbose
-      :dest :tiye:~/repo/workflow/
+      :dest :aliyun:~/repo/Cumulo/multi-user-markdown
       :deleteAll true
     \ (error stdout stderr cmd)
       if (? error)

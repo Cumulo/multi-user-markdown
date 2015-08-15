@@ -4,6 +4,8 @@ Multi User Markdown
 
 Experimental collabrative realtime Markdown editor.
 
+Open two pages to try! http://repo.cumulo.org/multi-user-markdown/
+
 ### Development
 
 ```bash
