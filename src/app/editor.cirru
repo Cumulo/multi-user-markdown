@@ -60,6 +60,7 @@ MarkedReact.setOptions $ {}
     var start (this.getStart)
     var end (this.getEnd)
     var el $ this.refs.source.getDOMNode
+    console.log :ensureSelection start end
     if (isnt el.selectionStart start) $ do
       = el.selectionStart start
     if (isnt el.selectionEnd end) $ do

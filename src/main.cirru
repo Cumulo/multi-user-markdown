@@ -16,5 +16,8 @@ view.out.forward websocket.in
 
 websocket.setup $ {} (:port 3000)
 
+websocket.out.for $ \ (data)
+  console.info :websocket.out $ JSON.stringify (data.toJS)
+
 store.out.for $ \ (data)
-  console.info (data.toJS)
+  console.info :store.out (data.toJS)

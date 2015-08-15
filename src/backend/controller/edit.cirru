@@ -4,11 +4,12 @@ var
   Immutable $ require :immutable
 
 var
+  monad $ require :../../util/monad
   textUtil $ require :../../util/text
   timeUtil $ require :../../util/time
 
 = exports.replace $ \ (db action)
-  console.log :editing action
+  console.log :editing $ JSON.stringify action
   var
     stateId action.stateId
     info action.data
@@ -22,8 +23,12 @@ var
           ... aState (set :start info.start) (set :end info.end)
           ... aState
             update :start $ \ (start)
-              cond (> start (+ info.start info.length)) (+ start info.length)
-                cond (> start info.start) info.start start
+              cond
+                > start (+ info.from info.length)
+                + start info.chunk.length
+                cond (> start info.from) info.from start
             update :end $ \ (end)
-              cond (> end (+ info.start info.length)) (+ end info.length)
-                cond (> end info.start) info.start end
+              cond
+                > end (+ info.from info.length)
+                + end info.chunk.length
+                cond (> end info.from) info.from end

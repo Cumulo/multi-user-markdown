@@ -39,12 +39,12 @@ var countTailMatch $ recur $ \ (prevText text count)
     :from textBefore.length
     :length textPrevBetween.length
     :chunk textBetween
-  console.log :diff prevText text result
+  -- console.log :diff prevText text result
   return result
 
 = exports.patch $ \ (text info)
   var textBefore $ text.substring 0 info.from
   var textAfter $ text.substring $ + info.from info.length
   var result $ + textBefore info.chunk textAfter
-  console.log :patch text info result
+  -- console.log :patch text info result
   return result
